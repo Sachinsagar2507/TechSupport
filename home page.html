@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data</title>
+  <h1>Datalog</h1>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ff5f6d, #ffc371);
+      color: #fff;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .modal .modal-dialog {
+      margin-top: 20vh;
+    }
+
+    nav {
+      background: linear-gradient(to bottom, #ff5f6d, #ffc371);
+      padding: 10px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      padding: 5px;
+      color: #fff;
+    }
+
+    nav ul li a.active {
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      height: calc(100vh - 50px); 
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#" class="active">Chat Here</a></li>
+      <li><a href="#">Private</a></li>
+      <li style="float:right"><a href="logout.php"><button class="btn btn-primary" style="border-radius: 6px; height: 40px; width: 100px;">LOGOUT</button></a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <iframe src="box.php"></iframe>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    const navLinks = document.querySelectorAll('nav a');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        navLinks.forEach(link => link.classList.remove('active'));
+
+        this.classList.add('active');
+
+        if (this.textContent === 'Home') {
+          document.querySelector('iframe').src = 'box.php';
+        } else if (this.textContent === 'Chat Here') {
+          document.querySelector('iframe').src = 'box.php';
+        }
+        else if (this.textContent === 'Private') {
+          document.querySelector('iframe').src = 'conversation.php';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
